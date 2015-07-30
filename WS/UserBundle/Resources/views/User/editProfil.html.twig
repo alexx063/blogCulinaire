@@ -1,0 +1,87 @@
+
+{% extends "WSAdminLTEBundle::layout.html.twig" %}
+
+{% block body %}
+    <div class="page-content">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box-header">
+                <div class="box-tools">
+                    <div class="input-group">
+                        <div class="input-group-btn">
+                            <a href="{{ path('fos_user_change_password') }}"><button class="btn btn-success btn-sm pull-left">Modifier mon mot de passe</button> </a>
+                        </div>
+                    </div>
+                </div>
+            </div><!-- /.box-header -->
+        </div>
+    </div>
+    <div class="row">
+        {% if app.session.flashbag.has('success') %}
+            <div class="alert alert-block alert-success fade in">
+                <a class="close" href="#" data-dismiss="alert"><i class="icon-remove"></i></a>
+                {% for message in app.session.flashbag.get('success') %}
+                    <strong><i class="icon-ok"></i>Succès ! </strong>{{message}}
+                {% endfor %}
+            </div>
+        {% endif %}
+        <div class="col-xs-12">
+            <div class="row">
+                {% if not form.vars.valid %}
+                    <div class="alert alert-block alert-danger fade in">
+                        <a class="close" href="#" data-dismiss="alert"><i class="icon-remove"></i></a>
+                        {{ form_errors(form) }}
+                    </div>
+                {% endif %}
+                <div class="col-sm-12">
+                    <div class="widget-box">
+                        <div class="widget-header">
+                            <h4>Modifier mon profil</h4>
+	                        <span class="widget-toolbar">
+	                            <div class="locales-container"></div>
+	                        </span>
+                        </div>
+                        {{ form_start(form, {'attr':{'class':'form-block'}}) }}
+                        <div class="widget-body">
+                            <div class="widget-main">
+                                <div class="tab-pane active" id="Global">
+                                    <div class="span12">
+                                        <div class="form-group clearfix">
+                                            <label class="control-label " for="">Nom</label>
+                                            <div class="input-group">
+                                                {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="span12">
+                                        <div class="form-group clearfix">
+                                            <label class="control-label " for="">Description</label>
+                                            <div class="input-group">
+                                                {{ form_widget(form.description, {'attr': {'class': 'form-control'}}) }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="span12">
+                                        <div class="form-group clearfix">
+                                            <label class="control-label " for="">Photo</label>
+                                            <div class="field-media ">
+                                                {{ form_widget(form.photo) }}
+                                            </div>
+                                            <img class="crud-column-media" src="{{ asset(user.photo.path)}}" alt="{{ asset(user.photo.alt)}}" width="300" height="200">
+                                        </div>
+                                    </div>
+                                    <div class="clearfix form-actions">
+                                        <div class="col-md-offset-3 col-md-9">
+                                            <button type="submit" id="ws_userbundle_user_Enregistrer" name="ws_userbundle_user[Enregistrer]" class="btn btn-success"><i class="icon-ok bigger-110"></i>Enregistrez</button>
+                                        </div><!--lol-->
+                                    </div>
+                                </div>
+                            </div>
+                            {{ form_widget(form._token) }} {{ form_end(form, {'render_rest': false}) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

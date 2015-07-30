@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>AdminLTE | Dashboard</title>
+        <meta content='width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no' name='viewport'>
+        {% stylesheets filter='cssrewrite' 'bundles/WSBlog/css/style.css'  %}
+      		<link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+    	{% endstylesheets %}
+       
+    </head>
+    <body >
+    	 {{ render(controller('WSBlogBundle:Front:header')) }}
+    </body>
+</html>

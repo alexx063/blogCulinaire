@@ -1,0 +1,170 @@
+
+<!DOCTYPE html>
+<html lang="fr" class="">
+<head>
+    <meta charset="utf-8">
+    <title>Oceania</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="robots" content="noindex,nofollow">
+    <meta name="author" content="provided by C2iS - Agence digitale">
+
+    {% stylesheets filter='cssrewrite' 
+        'bundles/WSAdminLTE/css/styles.css'
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+    {% endstylesheets %}
+            </head>
+
+<body class="login-layout skin-bigfoot">
+    <div id="navbar" class="navbar navbar-default navbar-fixed-top">
+        <div id="navbar-container" class="navbar-container">
+            <div class="navbar-header pull-left">
+                <div class="navbar-welcome">
+                    <p>
+                        <span>Bienvenue sur votre interface d&#039;administration</span>
+                    </p>
+                </div>
+            </div>
+
+            <div class="navbar-header pull-right">
+                <ul class="nav ace-nav">
+                    <li class="grey">
+                        <ul class="nav ace-nav info-nav">
+                            <li class="copyright grey">
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <div class="main-content">
+            <div class="row">
+                <div class="col-sm-10 col-sm-offset-1">
+                    <div class="login-container">
+                        <div class="center">
+                            <h1>
+                            </h1>
+                        </div>
+
+                        <div class="position-relative">
+                                <div id="login-box" class="login-box visible widget-box no-border">
+{% block fos_user_content %}
+{% include "WSUserBundle:Security:login_content.html.twig" %}
+{% endblock fos_user_content %}
+
+        
+
+        <div class="toolbar clearfix">
+            <div>
+                <a href="#" onclick="show_box('forgot-box'); return false;" class="forgot-password-link">
+                    <i class="icon-arrow-left"></i>
+                    I forgot my password
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div id="forgot-box" class="forgot-box widget-box no-border">
+    <div class="widget-body">
+        <div class="widget-main">
+            <h4 class="header red lighter bigger">
+                <i class="icon-key"></i>
+                Retrieve Password
+            </h4>
+
+            <div class="space-6"></div>
+
+            <p>
+                Enter your email and to receive instructions
+            </p>
+
+            <form action="/admin.php/admin/forgot-password" method="POST"  class="form-horizontal">
+                <fieldset>
+                    <label class="block clearfix">
+                        <div class="f-p-message"></div>
+
+                        <span class="block input-icon input-icon-right">
+                                                        <div class="input-group">
+        <input type="email" id="admin_forgot_password_email" name="admin_forgot_password[email]" required="required" class=" form-control" placeholder="Adresse email" />
+    </div>
+
+                            <i class="icon-envelope"></i>
+                        </span>
+                    </label>
+
+                    <div class="clearfix">
+                        <button type="submit" class="width-35 pull-right btn btn-sm btn-danger f-password">
+                            <i class="icon-lightbulb"></i>
+                            Send Me!
+                        </button>
+                    </div>
+                </fieldset>
+
+                
+            </form>
+        </div>
+
+        <div class="toolbar center">
+            <a href="#" onclick="show_box('login-box'); return false;" class="back-to-login-link">
+                Back to login
+                <i class="icon-arrow-right"></i>
+            </a>
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+<!-- page script -->
+         {% javascripts
+        'http://ajax.googleapis.com/ajax/libs/jquery/2.0.2/jquery.min.js'
+        'bundles/WSAdminLTE/js/item.js'
+        'bundles/WSAdminLTE/js/scripts.js'    
+        %}
+        <script src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+    
+
+    <script>
+        function show_box(id) {
+            $('.widget-box.visible').removeClass('visible');
+            $('#' + id).addClass('visible');
+        }
+    </script>
+
+
+    <script>
+        $('body').on('click', '.f-password', function (event) {
+            event.preventDefault();
+
+            $.ajax({
+                url:  $(this).closest('form').attr('action'),
+                type: 'post',
+                data: $('#admin_forgot_password_email')
+            }).done(function (data) {
+                var message = data.message;
+
+                if (data.status === true) {
+                    message = '<font color="green">' + message + '</font>';
+                } else {
+                    message = '<font color="red">' + message + '</font>';
+                }
+
+                $('.f-p-message')
+                        .html('')
+                        .append(message);
+            });
+        });
+    </script>
+</body>
+</html>

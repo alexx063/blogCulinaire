@@ -1,0 +1,4 @@
+user_editprofil:
+    path:     /admin/edit_profil
+    defaults: { _controller: WSUserBundle:User:index }
+

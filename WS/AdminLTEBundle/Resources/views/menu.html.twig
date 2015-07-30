@@ -1,0 +1,33 @@
+<div class="sidebar" id="sidebar">
+    <ul class="nav nav-list">
+        <li class="active first">
+            <a href="{{ path('adminLTE_index') }}">
+                <i class="icon-dashboard"></i><span class="menu-text">Dashboard</span>
+            </a>   
+        </li>
+        <li class="parent">
+            <a href="{{ path('adminLTE_listeCategorie') }}" class="dropdown-toggle" icon="list-alt">
+                <i class="icon-list"></i><span class="menu-text">Catégorie</span></b>
+            </a>
+        </li>
+        <li class="parent">
+            <a href="" class="dropdown-toggle" icon="list-alt">
+                <i class="icon-sitemap"></i><span class="menu-text">Articles</span><b class="arrow icon-angle-down"></b>
+            </a>
+            <ul class="submenu menu_level_1" style="display: none;">
+                {% for categorie in categories %}
+                <li class="first">
+                    <a href="{{ path('adminLTE_listeArticle',{'slug':categorie.slug}) }}">
+                        <i class="icon-list-alt"></i><span class="menu-text">{{categorie.title}}</span>
+                    </a>
+                </li>
+                {% endfor %}
+            </ul>
+        </li>
+        <li class="parent">
+            <a href="{{ path('adminLTE_topRecette') }}" class="dropdown-toggle" icon="list-alt">
+                <i class="icon-rocket"></i><span class="menu-text">Top articles</span></b>
+            </a>
+        </li>
+    </ul>
+</div>

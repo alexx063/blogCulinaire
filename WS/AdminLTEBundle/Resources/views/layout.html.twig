@@ -1,0 +1,70 @@
+
+<!DOCTYPE html>
+<html lang="fr" class="">
+<head>
+    <meta charset="utf-8">
+    <title>Oceania</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="robots" content="noindex,nofollow">
+    <meta name="author" content="provided by C2iS - Agence digitale">
+
+    {% stylesheets filter='cssrewrite' 
+        'bundles/WSAdminLTE/css/styles.css'
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+    {% endstylesheets %}
+    {% javascripts
+    'bundles/WSAdminLTE/js/jquery-2.1.4.min.js'
+    'bundles/WSAdminLTE/js/item.js'
+    'bundles/WSAdminLTE/js/scripts.js'
+
+    'bundles/WSAdminLTE/js/bigfoot_twigs.js'
+    %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+            </head>
+
+<body class=" skin-bigfoot">
+{{ render(controller('WSAdminLTEBundle:Admin:header')) }}
+<div class="main-container" id="main-container">
+    <div class="main-container-inner">
+        <a class="menu-toggler" id="menu-toggler" href="#">
+            <span class="menu-text"></span>
+        </a>
+
+{{ render(controller('WSAdminLTEBundle:Admin:menu')) }}
+
+
+        <div class="main-content">
+                                    
+            <div class="breadcrumbs" id="breadcrumbs">
+                <ul class="breadcrumb">
+                    <li>
+                        <i class="icon-home home-icon"></i>
+                            Home
+                    </li>
+                    <li>
+                        <a href="/admin_dev.php/admin/">Dashboard</a>
+                    </li>
+                </ul>
+            </div>
+             {% block body %}
+                {% endblock %}
+                {% block fos_user_content %}
+            {% endblock %}     
+        </div>
+    </div>
+
+        <a href="#" id="btn-scroll-up" class="btn-scroll-up btn btn-sm btn-inverse">
+            <i class="icon-double-angle-up icon-only bigger-110"></i>
+        </a>
+    </div>
+
+<div id="ajax-modal" class="modal container fade" tabindex="-1" style="display: none;"></div>
+
+
+
+
+</body>
+</html>

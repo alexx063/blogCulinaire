@@ -1,0 +1,114 @@
+
+ {% extends "WSAdminLTEBundle::layout.html.twig" %}
+
+{% block body %}
+<div class="page-content">
+    <div class="row">
+        <div class="col-xs-12">
+        	<div class="row">
+                {% if not form.vars.valid %}
+                    <div class="alert alert-block alert-danger fade in">
+                        <a class="close" href="#" data-dismiss="alert"><i class="icon-remove"></i></a>
+                                {{ form_errors(form) }}
+                                {{ form_errors(form.title) }}
+                    </div>
+                {% endif %}
+	            <div class="col-sm-12">
+	                <div class="widget-box">
+	                    <div class="widget-header">
+	                        <h4>Article : {{ article.title}}</h4>
+	                        <span class="widget-toolbar">
+	                            <div class="locales-container"></div>
+	                        </span>
+	                    </div>
+	                    {{ form_start(form, {'attr':{'class':'form-block'}}) }}
+	                    <div class="widget-body">
+	                    	<div class="widget-main">
+	                    		<div class="tab-pane active" id="Global">
+	                    			<div class="span12">
+	                    				<div class="form-group clearfix">
+	                    					<label class="control-label " for="">Titre</label>
+                    						<div class="input-group">
+                    							{{ form_widget(form.title) }}
+                    						</div>
+                    					</div>
+	                    			</div>
+	                    			<div class="span12">
+                                        <div class="form-group clearfix">
+                                        	<label class="control-label ">Media</label>
+                                        	<div class="field-media ">
+                                                    {{ form_widget(form.image) }}
+                                        		<img class="crud-column-media" src="{{ asset(article.image.path)}}" alt="{{ asset(article.image.alt)}}" width="300" height="200">
+
+                                        	</div>
+                                        </div>
+                                    </div>
+                                    <div class="span12">
+                                        <div class="form-group clearfix">
+                                        	<label class="control-label ">Thumbmail</label>
+                                        	<div class="field-media">
+                                        		{{ form_widget(form.thumbmail) }}
+                                        		<img class="crud-column-media" src="{{ asset(article.thumbmail.path)}}" alt="{{ asset(article.thumbmail.alt)}}" width="300" height="200">
+                                        	</div>
+                                        </div>
+                                    </div>
+                                    <div class="span12">
+	                    				<div class="form-group clearfix">
+	                    					<label class="control-label " for="">Préparation</label>
+                    						<div class="input-group">
+                    							{{ form_widget(form.preparation) }}
+                    						</div>
+                    					</div>
+	                    			</div>
+	                    			 <div class="span12">
+	                    				<div class="form-group clearfix">
+	                    					<label class="control-label " for="">Description</label>
+                    						<div class="input-group">
+                    							{{ form_widget(form.description, {'attr': {'placeholder':'Description facultative'}}) }}
+                    						</div>
+                    					</div>
+	                    			</div>
+	                    			<div class="span12">
+	                    				<div class="form-group clearfix">
+	                    					<label class="control-label " for="">Contenu</label>
+                    						<div class="input-group">
+                    							{{ form_widget(form.contenu) }}
+                    						</div>
+                    					</div>
+	                    			</div>
+	                    			<div class="span12">
+	                    				<div class="form-group clearfix">
+	                    					<label class="control-label " for="">Ingrédients</label>
+                    						<div class="input-group">
+                    							{{ form_widget(form.ingredients) }}
+                    						</div>
+                    					</div>
+	                    			</div>
+	                    			<div class="span12">
+	                    				<div class="form-group clearfix">
+	                    					<label class="control-label " for="">Actif</label>
+                    						<div class="input-group">
+								       			{{ form_widget(form.statut, {'attr':{'class':'ace ace-switch ace-switch-7'}}) }}
+								       			<span class="lbl"></span>
+                    						</div>
+                    					</div>
+	                    			</div>
+	                    		</div>
+	                    		<div class="clearfix form-actions">
+		                    		<div class="col-md-offset-3 col-md-9">
+	                                    <a href="{{ path('adminLTE_listeArticle',{'slug':article.categorie.slug}) }}" class="btn btn-info">
+	                                        <i class="icon-remove bigger-110"></i>Cancel
+	                                    </a>
+                                        <button type="submit" id="ws_adminltebundle_article_save" name="ws_adminltebundle_article[save]" class="btn btn-success"><i class="icon-ok bigger-110"></i>Enregistrez</button>
+	                                </div><!--lol-->
+	                            </div>
+	                    	</div>
+	                    </div>
+	                    {{ form_widget(form._token) }} {{ form_end(form, {'render_rest': false}) }}
+	                </div>
+	            </div>
+        	</div>
+        </div>
+    </div>
+</div>
+{% endblock %}

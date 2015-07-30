@@ -1,0 +1,39 @@
+<div class="widget-body">
+            <div class="widget-main">
+                <div class="space-6"></div>
+
+                <form action="{{ path("fos_user_security_check") }}" method="post">
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+                    <fieldset>
+                        
+                        <label class="block clearfix">
+                            <span class="block input-icon input-icon-right">
+                                <input type="text" id="username" name="_username" class="form-control" value="" placeholder="Nom d&#039;utilisateur ou email" />
+                                <i class="icon-user"></i>
+                            </span>
+                        </label>
+
+                        <label class="block clearfix">
+                            <span class="block input-icon input-icon-right">
+                                <input type="password" id="password" name="_password" class="form-control" placeholder="Mot de passe" />
+                                <i class="icon-lock"></i>
+                            </span>
+                        </label>
+
+                        <label class="inline" for="remember_me">
+                            <input class="ace" type="checkbox" id="remember_me" name="_remember_me" checked />
+                            <span class="lbl"> Remember Me</span>
+                        </label>
+
+                        <div class="space"></div>
+
+                        <div class="clearfix">
+                            <button class="width-35 pull-right btn btn-sm btn-primary" type="submit" id="_submit" name="_submit"> <i class="icon-key"></i>
+                                Login</button>
+                        </div>
+
+                        <div class="space-4"></div>
+                    </fieldset>
+                </form>
+        </div>
+</div>

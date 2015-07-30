@@ -1,0 +1,48 @@
+    <div class="navbar navbar-default" id="navbar">
+            <div class="navbar-container" id="navbar-container">
+            <div class="navbar-header pull-left">
+                <a href="/admin_dev.php/admin/" class="navbar-brand">
+                    Blog <small>Culinaire</small>
+                </a>
+            </div>
+
+            <div class="navbar-header pull-right" role="navigation">
+                <ul class="nav ace-nav">
+                    <li class="infos">
+                        <ul class="nav ace-nav info-nav">
+                                                        <li class="account">
+                                <a data-toggle="dropdown" href="#" class="dropdown-toggle align-right">
+                                    <i class="icon-user"></i>
+                                    <span class="user-info align-left">
+                                        <small>Bienvenue,</small>
+                                        {{user.name}}
+                                    </span>
+                                    <i class="icon-caret-down align-center icon-on-right"></i>
+                                </a>
+
+                                <ul class="user-menu pull-right dropdown-menu dropdown-yellow dropdown-caret dropdown-close">
+                                    
+                                    <li>
+                                        <a href="{{ path('user_editprofil') }}">
+                                            <i class="icon-user"></i>
+                                            Profile
+                                        </a>
+                                    </li>
+
+                                    <li class="divider"></li>
+
+                                    <li>
+                                        <a href="{{ path('fos_user_security_logout') }}">
+                                            <i class="icon-off"></i>
+                                            Logout
+                                        </a>
+                                    </li>
+                                </ul>
+                            </li>
+
+                                                    </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>

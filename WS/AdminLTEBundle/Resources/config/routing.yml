@@ -1,0 +1,38 @@
+adminLTE_index:
+    path:     /admin
+    defaults: { _controller: WSAdminLTEBundle:Admin:index }
+adminLTE_widget:
+    path:     /admin/widget
+    defaults: { _controller: WSAdminLTEBundle:Admin:widget }
+
+# route des top recettes
+adminLTE_topRecette:
+    path:    /admin/top_article
+    defaults: { _controller: WSAdminLTEBundle:Article:topArticle}
+# route des catégories
+adminLTE_listeCategorie:
+    path:     /admin/categorie
+    defaults: { _controller: WSAdminLTEBundle:Categorie:listeCategorie }
+adminLTE_ajoutCategorie:
+    path:     /admin/ajout_categorie
+    defaults: { _controller: WSAdminLTEBundle:Categorie:ajoutCategorie }
+adminLTE_editCategorie:
+    path:     /admin/edit_categorie/{id}
+    defaults: { _controller: WSAdminLTEBundle:Categorie:editCategorie }
+adminLTE_supCategorie:
+    path:     /admin/categorie/{id}
+    defaults: { _controller: WSAdminLTEBundle:Categorie:supCategorie }
+
+#route des articles
+adminLTE_listeArticle:
+    path:     /admin/article/{slug}
+    defaults: { _controller: WSAdminLTEBundle:Article:listeArticle }
+adminLTE_ajoutArticle:
+    path:     /admin/{slug}/ajout_article
+    defaults: { _controller: WSAdminLTEBundle:Article:ajoutArticle }
+adminLTE_editArticle:
+    path:     /admin/{slug}/edit_article/{id}
+    defaults: { _controller: WSAdminLTEBundle:Article:editArticle }
+adminLTE_deleteArticle:
+    path:     /admin/article/delete/{id}
+    defaults: { _controller: WSAdminLTEBundle:Article:supArticle }

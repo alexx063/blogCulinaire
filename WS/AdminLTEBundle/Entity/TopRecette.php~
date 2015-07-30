@@ -1,0 +1,48 @@
+<?php
+
+namespace WS\AdminLTEBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * TopRecette
+ *
+ * @ORM\Table()
+ * @ORM\Entity(repositoryClass="WS\AdminLTEBundle\Entity\TopRecetteRepository")
+ */
+class TopRecette
+{
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="id", type="integer")
+     * @ORM\Id
+     * @ORM\GeneratedValue(strategy="AUTO")
+     */
+    private $id;
+
+    /**
+     * @ORM\OneToOne(targetEntity="WS\AdminLTEBundle\Entity\Article", cascade={"persist","remove"})
+     */
+    private $top1;
+
+    /**
+     * @ORM\OneToOne(targetEntity="WS\AdminLTEBundle\Entity\Article", cascade={"persist","remove"})
+     */
+    private $top2;
+
+    /**
+     * @ORM\OneToOne(targetEntity="WS\AdminLTEBundle\Entity\Article", cascade={"persist","remove"})
+     */
+    private $top3;
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+}

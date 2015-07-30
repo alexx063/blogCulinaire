@@ -1,0 +1,4 @@
+services:
+#    ws_admin_lte.example:
+#        class: WS\AdminLTEBundle\Example
+#        arguments: [@service_id, "plain_value", %parameter%]

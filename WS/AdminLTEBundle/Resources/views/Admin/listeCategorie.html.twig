@@ -1,0 +1,49 @@
+
+ {% extends "WSAdminLTEBundle::layout.html.twig" %}
+
+{% block body %}
+	<aside class="right-side">
+		  <div class="row">
+                        <div class="col-xs-12">
+                            <div class="box">
+                                <div class="box-header">
+                                    <h3 class="box-title">Gérer mes catégories</h3>
+                                    <div class="box-tools">
+                                        <div class="input-group">
+                                            <div class="input-group-btn">
+                                                <a href="{{ path('adminLTE_ajoutCategorie') }}"><button class="btn btn-success btn-sm pull-right">Ajouter une catégorie <span class="fa fa-plus-square-o"></span></button> </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div><!-- /.box-header -->
+                                <div class="box-body table-responsive no-padding">
+                                    <table class="table table-hover">
+                                        <tr>
+                                            <th>ID</th>
+                                            <th>Nom</th>
+                                            <th>Statut</th>
+                                            <th>Description</th>
+                                            <th style="text-align:center">Editer</th>
+                                            <th style="text-align:center">Supprimer</th>
+                                        </tr>
+                                        {% for categorie in categories %}
+                                        <tr>
+                                            <td>{{ categorie.id }}</td>
+                                            <td style="font-weight:bold">{{ categorie.title }}</td>
+                                            {% if categorie.statut == 1 %}
+                                            	<td><span class="label label-success">Publié</span></td>
+                                            {% elseif categorie.statut == 0 %}
+                                            	<td><span class="label label-warning">Suspendu</span></td>
+                                         	{% endif %}
+                                            <td>{{categorie.description}}</td>
+                                            <td style="text-align:center"><span class="fa fa-edit"></span></td>
+                                            <td style="text-align:center"><a href="{{ path('adminLTE_supCategorie',{'id':categorie.id}) }}"><span class="fa fa-times"></span></a></td>
+                                        </tr>
+                                       {% endfor %}
+                                    </table>
+                                </div><!-- /.box-body -->
+                            </div><!-- /.box -->
+                        </div>
+                    </div>
+	</aside>
+{% endblock %}

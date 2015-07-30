@@ -1,0 +1,73 @@
+
+{% extends "WSAdminLTEBundle::layout.html.twig" %}
+
+{% block body %}
+    <div class="page-content">
+        <div class="row">
+            {% if app.session.flashbag.has('success') %}
+                <div class="alert alert-block alert-success fade in">
+                    <a class="close" href="#" data-dismiss="alert"><i class="icon-remove"></i></a>
+                    {% for message in app.session.flashbag.get('success') %}
+                        <strong><i class="icon-ok"></i>Succès ! </strong>{{message}}
+                    {% endfor %}
+                </div>
+            {% endif %}
+            <div class="col-xs-12">
+                <div class="row">
+                    {% if not form.vars.valid %}
+                        <div class="alert alert-block alert-danger fade in">
+                            <a class="close" href="#" data-dismiss="alert"><i class="icon-remove"></i></a>
+                            {{ form_errors(form) }}
+                        </div>
+                    {% endif %}
+                    <div class="col-sm-12">
+                        <div class="widget-box">
+                            <div class="widget-header">
+                                <h4>Gestion des top recettes</h4>
+	                        <span class="widget-toolbar">
+	                            <div class="locales-container"></div>
+	                        </span>
+                            </div>
+                            {{ form_start(form, {'attr':{'class':'form-block'}}) }}
+                            <div class="widget-body">
+                                <div class="widget-main">
+                                    <div class="tab-pane active" id="Global">
+                                        <div class="span12">
+                                            <div class="form-group clearfix">
+                                                <label class="control-label " for="">Recette n°1</label>
+                                                <div class="input-group">
+                                                    {{ form_widget(form.top1) }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="span12">
+                                            <div class="form-group clearfix">
+                                                <label class="control-label " for="">Recette n°2</label>
+                                                <div class="input-group">
+                                                    {{ form_widget(form.top2) }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="span12">
+                                            <div class="form-group clearfix">
+                                                <label class="control-label " for="">Recette n°3</label>
+                                                <div class="input-group">
+                                                    {{ form_widget(form.top3) }}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    <div class="clearfix form-actions">
+                                        <div class="col-md-offset-3 col-md-9">
+                                            <button type="submit" id="ws_adminltebundle_toprecette_save" name="ws_adminltebundle_toprecette[save]" class="btn btn-success"><i class="icon-ok bigger-110"></i>Enregistrez</button>
+                                        </div><!--lol-->
+                                    </div>
+                                </div>
+                            </div>
+                            {{ form_widget(form._token) }} {{ form_end(form, {'render_rest': false}) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

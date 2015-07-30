@@ -1,0 +1,51 @@
+$greyDark : #202020;
+$grey : #a9a9a9;
+$white :white;
+
+
+*{
+	margin: 0;
+	padding: 0;
+	box-sizing: border-box;
+}
+
+header{
+	position: relative;
+	width: 100%;
+	height:55px;
+	background-color: $greyDark;
+
+	#menu>ul{
+		display: table;
+		max-width: 988px;
+		margin: 0 auto;
+
+		li{
+			display: table-cell;
+			margin: 0;
+			line-height: 50px;
+			vertical-align: middle;
+
+			a{
+				position: relative;
+				display: block;
+				height: 50px;
+				padding: 0 19px;
+				margin-right: 1px;
+				margin-bottom: 5px;
+				font: 500 13px/50px sans-serif;
+				color: $grey;
+				text-align: center;
+				text-decoration: none;
+				text-transform: uppercase;
+				cursor: pointer;
+				-webkit-transition: all .6s ease;
+				transition: all .6s ease;
+
+				&:hover{
+					color: $white;
+				}
+			}
+		}
+	}
+}
